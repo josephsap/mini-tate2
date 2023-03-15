@@ -33,17 +33,18 @@ export type TProps = {
   imageSrc: string;
   annos?: TAnnotationRaw[];
   onChange?: (annos: TAnnotationRaw[]) => any;
+  onHover?: (name: string) => string;
   onError?: (error: string) => any;
   annotationTypes?: string[];
   options?: TOptions;
   rainbowMode?: boolean;
-  hoverActive?: boolean;
 };
 
 export function ImageAnnotator({
   imageSrc,
   annos,
   onChange,
+  onHover,
   onError,
   annotationTypes = [],
   options = {},
@@ -87,6 +88,13 @@ export function ImageAnnotator({
       setAnnotations(rawToCSSAnno(rawAnnos, imgRatio.height, imgRatio.width));
     }
   }, [rawAnnos, imgLoaded, imgRatio.height, imgRatio.width]);
+
+  useEffect(() => {
+    if (onHover) {
+      console.log('in hover onHover', hoverActiveAnno)
+      onHover(hoverActiveAnno);
+    }
+  }, [hoverActiveAnno]);
 
   useEffect(() => {
     const img = document.getElementById('anno-img');
@@ -139,7 +147,11 @@ export function ImageAnnotator({
   };
 
   const handleEditAnnotation = (name: string) => {
-    console.log('from mini tate 2 github handleEdit', hoverActiveAnno)
+    console.log('from mini tate 2 github handleEdit', hoverActiveAnno);
+    if (onHover) {
+      console.log('On HOver Function', hoverActiveAnno)
+      return hoverActiveAnno;
+    }
     const newSelectedAnno = annotations.find((a) => a.name === name) || null;
     if (selectedAnno !== null && selectedAnno !== newSelectedAnno) {
       dispatch(clearSelectedAnno());
@@ -453,5 +465,6 @@ ImageAnnotator.defaultProps = {
   annotationTypes: [],
   onChange: null,
   onError: null,
-  options: []
+  options: [],
+  onHover: null
 };

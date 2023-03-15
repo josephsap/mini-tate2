@@ -72,7 +72,7 @@ function StaticAnnotation({
       onPointerDown={(e) => e.stopPropagation()}
       style={{ ...styles, height, width, top, left, backgroundColor }}
       onMouseEnter={() => { setShowName(true); setHoverActiveAnno(name) }}
-      onMouseLeave={() => { setShowName(false); setHoverActiveAnno(name) }}
+      onMouseLeave={() => { setShowName(false); setHoverActiveAnno('') }}
     >
       {showName && (
         <h3

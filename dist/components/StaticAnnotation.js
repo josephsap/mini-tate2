@@ -69,7 +69,7 @@ function StaticAnnotation(_a) {
         }
         return "".concat(leftCoord, "px");
     };
-    return (react_1["default"].createElement("div", { className: "staticAnno".concat(showName ? ' pointer' : ''), "data-testid": "static-annotation", onClick: onClick, onPointerDown: function (e) { return e.stopPropagation(); }, style: __assign(__assign({}, styles), { height: height, width: width, top: top, left: left, backgroundColor: backgroundColor }), onMouseEnter: function () { setShowName(true); setHoverActiveAnno(name); }, onMouseLeave: function () { setShowName(false); setHoverActiveAnno(name); } }, showName && (react_1["default"].createElement("h3", { className: "annotationNameHover", style: {
+    return (react_1["default"].createElement("div", { className: "staticAnno".concat(showName ? ' pointer' : ''), "data-testid": "static-annotation", onClick: onClick, onPointerDown: function (e) { return e.stopPropagation(); }, style: __assign(__assign({}, styles), { height: height, width: width, top: top, left: left, backgroundColor: backgroundColor }), onMouseEnter: function () { setShowName(true); setHoverActiveAnno(name); }, onMouseLeave: function () { setShowName(false); setHoverActiveAnno(''); } }, showName && (react_1["default"].createElement("h3", { className: "annotationNameHover", style: {
             top: "".concat((0, utils_1.pixelToNum)(height) - 10, "px"),
             left: calculateTooltipPosition()
         } }, name))));

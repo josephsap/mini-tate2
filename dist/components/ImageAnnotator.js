@@ -60,7 +60,7 @@ var AnnotationWrapper_1 = __importDefault(require("./AnnotationWrapper"));
 var Form_1 = __importDefault(require("./Form"));
 require("./styles.css");
 function ImageAnnotator(_a) {
-    var imageSrc = _a.imageSrc, annos = _a.annos, onChange = _a.onChange, onError = _a.onError, _b = _a.annotationTypes, annotationTypes = _b === void 0 ? [] : _b, _c = _a.options, options = _c === void 0 ? {} : _c, _d = _a.rainbowMode, rainbowMode = _d === void 0 ? false : _d;
+    var imageSrc = _a.imageSrc, annos = _a.annos, onChange = _a.onChange, onHover = _a.onHover, onError = _a.onError, _b = _a.annotationTypes, annotationTypes = _b === void 0 ? [] : _b, _c = _a.options, options = _c === void 0 ? {} : _c, _d = _a.rainbowMode, rainbowMode = _d === void 0 ? false : _d;
     var dispatch = (0, hooks_1.useAppDispatch)();
     var _e = (0, react_1.useState)(false), imgLoaded = _e[0], setImgLoaded = _e[1];
     var _f = (0, react_1.useState)(''), hoverActiveAnno = _f[0], setHoverActiveAnno = _f[1];
@@ -97,6 +97,12 @@ function ImageAnnotator(_a) {
             setAnnotations((0, utils_1.rawToCSSAnno)(rawAnnos, imgRatio.height, imgRatio.width));
         }
     }, [rawAnnos, imgLoaded, imgRatio.height, imgRatio.width]);
+    (0, react_1.useEffect)(function () {
+        if (onHover) {
+            console.log('in hover onHover', hoverActiveAnno);
+            onHover(hoverActiveAnno);
+        }
+    }, [hoverActiveAnno]);
     (0, react_1.useEffect)(function () {
         var img = document.getElementById('anno-img');
         if (options.imgStyles && img) {
@@ -147,6 +153,10 @@ function ImageAnnotator(_a) {
     };
     var handleEditAnnotation = function (name) {
         console.log('from mini tate 2 github handleEdit', hoverActiveAnno);
+        if (onHover) {
+            console.log('On HOver Function', hoverActiveAnno);
+            return hoverActiveAnno;
+        }
         var newSelectedAnno = annotations.find(function (a) { return a.name === name; }) || null;
         if (selectedAnno !== null && selectedAnno !== newSelectedAnno) {
             dispatch((0, currAnno_1.clearSelectedAnno)());
@@ -385,6 +395,7 @@ ImageAnnotator.defaultProps = {
     annotationTypes: [],
     onChange: null,
     onError: null,
-    options: []
+    options: [],
+    onHover: null
 };
 //# sourceMappingURL=ImageAnnotator.js.map
