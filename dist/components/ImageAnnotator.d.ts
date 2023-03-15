@@ -9,8 +9,9 @@ export type TProps = {
     annotationTypes?: string[];
     options?: TOptions;
     rainbowMode?: boolean;
+    hoverActive?: boolean;
 };
-export declare function ImageAnnotator({ imageSrc, annos, onChange, onError, annotationTypes, options, rainbowMode, }: TProps): JSX.Element;
+export declare function ImageAnnotator({ imageSrc, annos, onChange, onError, annotationTypes, options, rainbowMode }: TProps): JSX.Element;
 export declare namespace ImageAnnotator {
     var defaultProps: {
         annos: any;

@@ -22,6 +22,7 @@ export const testAnno = {
 export const renderEditableAnno = () =>
   render(
     <AnnotationWrapper
+      setHoverActiveAnno={jest.fn()}
       annotationTypes={['cat', 'dog']}
       handleCancelEdit={jest.fn()}
       handleEditAnnotation={jest.fn()}

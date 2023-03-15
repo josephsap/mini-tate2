@@ -37,6 +37,7 @@ export type TProps = {
   annotationTypes?: string[];
   options?: TOptions;
   rainbowMode?: boolean;
+  hoverActive?: boolean;
 };
 
 export function ImageAnnotator({
@@ -46,10 +47,11 @@ export function ImageAnnotator({
   onError,
   annotationTypes = [],
   options = {},
-  rainbowMode = false,
+  rainbowMode = false
 }: TProps) {
   const dispatch = useAppDispatch();
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [hoverActiveAnno, setHoverActiveAnno] = useState<string>('');
   const imgRect = useCurrentImg();
   const { edit, drag, cornerDrag } = useAppSelector(selectMode);
 
@@ -137,7 +139,7 @@ export function ImageAnnotator({
   };
 
   const handleEditAnnotation = (name: string) => {
-    console.log('from mini tate 2 github handleEdit')
+    console.log('from mini tate 2 github handleEdit', hoverActiveAnno)
     const newSelectedAnno = annotations.find((a) => a.name === name) || null;
     if (selectedAnno !== null && selectedAnno !== newSelectedAnno) {
       dispatch(clearSelectedAnno());
@@ -416,6 +418,7 @@ export function ImageAnnotator({
           options={options}
           removeAnnotation={removeAnnotation}
           rainbowMode={rainbowMode}
+          setHoverActiveAnno={setHoverActiveAnno}
           {...annotation}
         />
       ))}
@@ -450,5 +453,5 @@ ImageAnnotator.defaultProps = {
   annotationTypes: [],
   onChange: null,
   onError: null,
-  options: [],
+  options: []
 };

@@ -63,17 +63,18 @@ function ImageAnnotator(_a) {
     var imageSrc = _a.imageSrc, annos = _a.annos, onChange = _a.onChange, onError = _a.onError, _b = _a.annotationTypes, annotationTypes = _b === void 0 ? [] : _b, _c = _a.options, options = _c === void 0 ? {} : _c, _d = _a.rainbowMode, rainbowMode = _d === void 0 ? false : _d;
     var dispatch = (0, hooks_1.useAppDispatch)();
     var _e = (0, react_1.useState)(false), imgLoaded = _e[0], setImgLoaded = _e[1];
+    var _f = (0, react_1.useState)(''), hoverActiveAnno = _f[0], setHoverActiveAnno = _f[1];
     var imgRect = (0, hooks_1.useCurrentImg)();
-    var _f = (0, hooks_1.useAppSelector)(modes_1.selectMode), edit = _f.edit, drag = _f.drag, cornerDrag = _f.cornerDrag;
-    var _g = (0, hooks_1.useAppSelector)(currAnno_1.selectCurrAnno), selectedAnno = _g.selectedAnno, selectedCorner = _g.selectedCorner, updatedCoords = _g.updatedCoords;
+    var _g = (0, hooks_1.useAppSelector)(modes_1.selectMode), edit = _g.edit, drag = _g.drag, cornerDrag = _g.cornerDrag;
+    var _h = (0, hooks_1.useAppSelector)(currAnno_1.selectCurrAnno), selectedAnno = _h.selectedAnno, selectedCorner = _h.selectedCorner, updatedCoords = _h.updatedCoords;
     var coords = (0, hooks_1.useAppSelector)(cursor_1.selectCursor).coords;
-    var _h = (0, react_1.useState)(false), drawingMode = _h[0], setDrawingMode = _h[1];
-    var _j = (0, react_1.useState)(null), boundary = _j[0], setBoundary = _j[1];
-    var _k = (0, react_1.useState)([0, 0]), origin = _k[0], setOrigin = _k[1];
-    var _l = (0, react_1.useState)(false), displayForm = _l[0], setDisplayForm = _l[1];
-    var _m = (0, react_1.useState)([]), annotations = _m[0], setAnnotations = _m[1];
-    var _o = (0, react_1.useState)(imgRect), imgRatio = _o[0], setImgRatio = _o[1];
-    var _p = (0, react_1.useState)(annos || []), rawAnnos = _p[0], setRawAnnos = _p[1];
+    var _j = (0, react_1.useState)(false), drawingMode = _j[0], setDrawingMode = _j[1];
+    var _k = (0, react_1.useState)(null), boundary = _k[0], setBoundary = _k[1];
+    var _l = (0, react_1.useState)([0, 0]), origin = _l[0], setOrigin = _l[1];
+    var _m = (0, react_1.useState)(false), displayForm = _m[0], setDisplayForm = _m[1];
+    var _o = (0, react_1.useState)([]), annotations = _o[0], setAnnotations = _o[1];
+    var _p = (0, react_1.useState)(imgRect), imgRatio = _p[0], setImgRatio = _p[1];
+    var _q = (0, react_1.useState)(annos || []), rawAnnos = _q[0], setRawAnnos = _q[1];
     var debouncedPointerMove = (0, react_1.useCallback)((0, debounce_1["default"])(function (e) {
         var clientX = e.clientX, clientY = e.clientY;
         if (!cornerDrag && !drag)
@@ -145,7 +146,7 @@ function ImageAnnotator(_a) {
         });
     };
     var handleEditAnnotation = function (name) {
-        console.log('from mini tate 2 github handleEdit');
+        console.log('from mini tate 2 github handleEdit', hoverActiveAnno);
         var newSelectedAnno = annotations.find(function (a) { return a.name === name; }) || null;
         if (selectedAnno !== null && selectedAnno !== newSelectedAnno) {
             dispatch((0, currAnno_1.clearSelectedAnno)());
@@ -367,7 +368,7 @@ function ImageAnnotator(_a) {
                 setImgRatio({ height: height, width: width });
                 setImgLoaded(true);
             }, onPointerMove: function (e) { return debouncedPointerMove(e); }, src: imageSrc, style: options.imgStyles ? options.imgStyles : {} }),
-        annotations.map(function (annotation) { return (react_1["default"].createElement(AnnotationWrapper_1["default"], __assign({ annotationTypes: annotationTypes, handleCancelEdit: handleCancelEdit, handleEditAnnotation: handleEditAnnotation, handleKeyPress: handleKeyPress, handlePointerMove: debouncedPointerMove, handleSaveEdit: handleSaveEdit, key: annotation.name, options: options, removeAnnotation: removeAnnotation, rainbowMode: rainbowMode }, annotation))); }),
+        annotations.map(function (annotation) { return (react_1["default"].createElement(AnnotationWrapper_1["default"], __assign({ annotationTypes: annotationTypes, handleCancelEdit: handleCancelEdit, handleEditAnnotation: handleEditAnnotation, handleKeyPress: handleKeyPress, handlePointerMove: debouncedPointerMove, handleSaveEdit: handleSaveEdit, key: annotation.name, options: options, removeAnnotation: removeAnnotation, rainbowMode: rainbowMode, setHoverActiveAnno: setHoverActiveAnno }, annotation))); }),
         displayForm && (react_1["default"].createElement(Form_1["default"], { annotationTypes: annotationTypes, handleCancel: function () {
                 boundary === null || boundary === void 0 ? void 0 : boundary.remove();
                 setDisplayForm(false);

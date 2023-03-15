@@ -33,6 +33,7 @@ type Props = {
   annotationTypes: string[];
   options: TOptions;
   rainbowMode: boolean;
+  setHoverActiveAnno: (name: string) => void;
 };
 
 function AnnotationWrapper({
@@ -51,6 +52,7 @@ function AnnotationWrapper({
   annotationTypes,
   options,
   rainbowMode,
+  setHoverActiveAnno
 }: Props) {
   const dispatch = useAppDispatch();
 
@@ -144,6 +146,7 @@ function AnnotationWrapper({
       types={annotationTypes}
       type={type}
       rainbowMode={rainbowMode}
+      setHoverActiveAnno={setHoverActiveAnno}
     />
   );
 }

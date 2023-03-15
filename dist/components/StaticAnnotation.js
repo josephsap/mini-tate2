@@ -50,7 +50,7 @@ var getColor = function (types, type) {
     return "rgba(".concat(r, ", ").concat(g, ", ").concat(b, ", 0.5)");
 };
 function StaticAnnotation(_a) {
-    var height = _a.height, width = _a.width, top = _a.top, left = _a.left, onClick = _a.onClick, options = _a.options, name = _a.name, rainbowMode = _a.rainbowMode, _b = _a.type, type = _b === void 0 ? null : _b, _c = _a.types, types = _c === void 0 ? [] : _c;
+    var height = _a.height, width = _a.width, top = _a.top, left = _a.left, onClick = _a.onClick, options = _a.options, name = _a.name, rainbowMode = _a.rainbowMode, _b = _a.type, type = _b === void 0 ? null : _b, _c = _a.types, types = _c === void 0 ? [] : _c, setHoverActiveAnno = _a.setHoverActiveAnno;
     var styles = options.annoStyles || {};
     var _d = (0, react_1.useState)(false), showName = _d[0], setShowName = _d[1];
     // color-code by type
@@ -69,7 +69,7 @@ function StaticAnnotation(_a) {
         }
         return "".concat(leftCoord, "px");
     };
-    return (react_1["default"].createElement("div", { className: "staticAnno".concat(showName ? ' pointer' : ''), "data-testid": "static-annotation", onClick: onClick, onPointerDown: function (e) { return e.stopPropagation(); }, style: __assign(__assign({}, styles), { height: height, width: width, top: top, left: left, backgroundColor: backgroundColor }), onMouseEnter: function () { return setShowName(true); }, onMouseLeave: function () { return setShowName(false); } }, showName && (react_1["default"].createElement("h3", { className: "annotationNameHover", style: {
+    return (react_1["default"].createElement("div", { className: "staticAnno".concat(showName ? ' pointer' : ''), "data-testid": "static-annotation", onClick: onClick, onPointerDown: function (e) { return e.stopPropagation(); }, style: __assign(__assign({}, styles), { height: height, width: width, top: top, left: left, backgroundColor: backgroundColor }), onMouseEnter: function () { setShowName(true); setHoverActiveAnno(name); }, onMouseLeave: function () { setShowName(false); setHoverActiveAnno(name); } }, showName && (react_1["default"].createElement("h3", { className: "annotationNameHover", style: {
             top: "".concat((0, utils_1.pixelToNum)(height) - 10, "px"),
             left: calculateTooltipPosition()
         } }, name))));

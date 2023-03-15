@@ -16,6 +16,7 @@ export type Props = {
   rainbowMode: boolean;
   type?: string | null;
   types?: string[];
+  setHoverActiveAnno: (name: string) => void;
 };
 
 const colors = [
@@ -42,6 +43,7 @@ function StaticAnnotation({
   rainbowMode,
   type = null,
   types = [],
+  setHoverActiveAnno,
 }: Props) {
   const styles = options.annoStyles || {};
   const [showName, setShowName] = useState<boolean>(false);
@@ -69,8 +71,8 @@ function StaticAnnotation({
       onClick={onClick}
       onPointerDown={(e) => e.stopPropagation()}
       style={{ ...styles, height, width, top, left, backgroundColor }}
-      onMouseEnter={() => setShowName(true)}
-      onMouseLeave={() => setShowName(false)}
+      onMouseEnter={() => { setShowName(true); setHoverActiveAnno(name) }}
+      onMouseLeave={() => { setShowName(false); setHoverActiveAnno(name) }}
     >
       {showName && (
         <h3

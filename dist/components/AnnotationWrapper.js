@@ -46,7 +46,7 @@ var hooks_1 = require("../hooks");
 var currAnno_1 = require("../store/reducers/currAnno");
 var cursor_1 = require("../store/reducers/cursor");
 function AnnotationWrapper(_a) {
-    var handleEditAnnotation = _a.handleEditAnnotation, name = _a.name, height = _a.height, width = _a.width, top = _a.top, left = _a.left, handleCancelEdit = _a.handleCancelEdit, handleKeyPress = _a.handleKeyPress, handlePointerMove = _a.handlePointerMove, handleSaveEdit = _a.handleSaveEdit, removeAnnotation = _a.removeAnnotation, type = _a.type, annotationTypes = _a.annotationTypes, options = _a.options, rainbowMode = _a.rainbowMode;
+    var handleEditAnnotation = _a.handleEditAnnotation, name = _a.name, height = _a.height, width = _a.width, top = _a.top, left = _a.left, handleCancelEdit = _a.handleCancelEdit, handleKeyPress = _a.handleKeyPress, handlePointerMove = _a.handlePointerMove, handleSaveEdit = _a.handleSaveEdit, removeAnnotation = _a.removeAnnotation, type = _a.type, annotationTypes = _a.annotationTypes, options = _a.options, rainbowMode = _a.rainbowMode, setHoverActiveAnno = _a.setHoverActiveAnno;
     var dispatch = (0, hooks_1.useAppDispatch)();
     var _b = (0, hooks_1.useAppSelector)(currAnno_1.selectCurrAnno), selectedAnno = _b.selectedAnno, updatedCoords = _b.updatedCoords;
     var editMode = name === (selectedAnno === null || selectedAnno === void 0 ? void 0 : selectedAnno.name);
@@ -90,7 +90,7 @@ function AnnotationWrapper(_a) {
         }, height: updatedCoords.height || '', left: updatedCoords.left || '', name: name, options: options, removeAnnotation: removeAnnotation, top: updatedCoords.top || '', type: type, width: updatedCoords.width || '' })); });
     if (editMode)
         return react_1["default"].createElement(AnnotationToEdit, null);
-    return (react_1["default"].createElement(StaticAnnotation_1["default"], { height: height, left: left, onClick: function () { return handleEditAnnotation(name); }, options: options, top: top, width: width, name: name, types: annotationTypes, type: type, rainbowMode: rainbowMode }));
+    return (react_1["default"].createElement(StaticAnnotation_1["default"], { height: height, left: left, onClick: function () { return handleEditAnnotation(name); }, options: options, top: top, width: width, name: name, types: annotationTypes, type: type, rainbowMode: rainbowMode, setHoverActiveAnno: setHoverActiveAnno }));
 }
 exports["default"] = AnnotationWrapper;
 //# sourceMappingURL=AnnotationWrapper.js.map

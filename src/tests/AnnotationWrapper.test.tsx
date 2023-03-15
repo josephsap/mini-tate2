@@ -26,6 +26,7 @@ describe('<AnnotationWrapper />', () => {
         type="cat"
         width="20px"
         rainbowMode={false}
+        setHoverActiveAnno={jest.fn()}
       />
     );
 

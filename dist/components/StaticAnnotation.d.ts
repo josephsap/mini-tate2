@@ -11,6 +11,7 @@ export type Props = {
     rainbowMode: boolean;
     type?: string | null;
     types?: string[];
+    setHoverActiveAnno: (name: string) => void;
 };
-declare function StaticAnnotation({ height, width, top, left, onClick, options, name, rainbowMode, type, types, }: Props): JSX.Element;
+declare function StaticAnnotation({ height, width, top, left, onClick, options, name, rainbowMode, type, types, setHoverActiveAnno, }: Props): JSX.Element;
 export default StaticAnnotation;

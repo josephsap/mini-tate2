@@ -11,7 +11,7 @@ require("@testing-library/jest-dom/extend-expect");
 var testUtils_1 = require("../testUtils");
 describe('<AnnotationWrapper />', function () {
     test('renders static annotation if not selected', function () {
-        var getByTestId = (0, testUtils_1.render)(react_2["default"].createElement(AnnotationWrapper_1["default"], { annotationTypes: ['cat', 'dog'], handleCancelEdit: jest.fn(), handleEditAnnotation: jest.fn(), handleKeyPress: jest.fn(), handlePointerMove: jest.fn(), handleSaveEdit: jest.fn(), height: "20px", left: "20px", name: "annotation of dog", options: {}, removeAnnotation: jest.fn(), top: "20px", type: "cat", width: "20px", rainbowMode: false })).getByTestId;
+        var getByTestId = (0, testUtils_1.render)(react_2["default"].createElement(AnnotationWrapper_1["default"], { annotationTypes: ['cat', 'dog'], handleCancelEdit: jest.fn(), handleEditAnnotation: jest.fn(), handleKeyPress: jest.fn(), handlePointerMove: jest.fn(), handleSaveEdit: jest.fn(), height: "20px", left: "20px", name: "annotation of dog", options: {}, removeAnnotation: jest.fn(), top: "20px", type: "cat", width: "20px", rainbowMode: false, setHoverActiveAnno: jest.fn() })).getByTestId;
         expect(getByTestId('static-annotation')).toBeDefined();
     });
     test('renders annotation in edit mode if selected', function () {
