@@ -137,6 +137,7 @@ export function ImageAnnotator({
   };
 
   const handleEditAnnotation = (name: string) => {
+    console.log('from mini tate 2 github handleEdit')
     const newSelectedAnno = annotations.find((a) => a.name === name) || null;
     if (selectedAnno !== null && selectedAnno !== newSelectedAnno) {
       dispatch(clearSelectedAnno());
