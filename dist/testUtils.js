@@ -58,7 +58,7 @@ exports.testAnno = {
     height: '20px'
 };
 var renderEditableAnno = function () {
-    return (0, exports.render)(react_1["default"].createElement(AnnotationWrapper_1["default"], { setHoverActiveAnno: jest.fn(), annotationTypes: ['cat', 'dog'], handleCancelEdit: jest.fn(), handleEditAnnotation: jest.fn(), handleKeyPress: jest.fn(), handlePointerMove: jest.fn(), handleSaveEdit: jest.fn(), height: "20px", left: "20px", name: exports.testAnno.name, options: {}, removeAnnotation: jest.fn(), top: "20px", type: "cat", width: "20px", rainbowMode: false }), {
+    return (0, exports.render)(react_1["default"].createElement(AnnotationWrapper_1["default"], { setHoverActiveAnno: jest.fn(), annotationTypes: ['cat', 'dog'], handleCancelEdit: jest.fn(), handleEditAnnotation: jest.fn(), handleKeyPress: jest.fn(), handlePointerMove: jest.fn(), handleSaveEdit: jest.fn(), height: "20px", left: "20px", name: exports.testAnno.name, options: {}, removeAnnotation: jest.fn(), top: "20px", type: "cat", width: "20px", rainbowMode: false, onHoverFromList: "hello" }), {
         preloadedState: {
             currAnno: {
                 selectedAnno: exports.testAnno,

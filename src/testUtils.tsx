@@ -38,6 +38,7 @@ export const renderEditableAnno = () =>
       type="cat"
       width="20px"
       rainbowMode={false}
+      onHoverFromList="hello"
     />,
     {
       preloadedState: {

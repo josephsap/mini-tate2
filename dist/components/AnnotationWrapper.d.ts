@@ -17,6 +17,7 @@ type Props = {
     options: TOptions;
     rainbowMode: boolean;
     setHoverActiveAnno: (name: string) => void;
+    onHoverFromList: string;
 };
-declare function AnnotationWrapper({ handleEditAnnotation, name, height, width, top, left, handleCancelEdit, handleKeyPress, handlePointerMove, handleSaveEdit, removeAnnotation, type, annotationTypes, options, rainbowMode, setHoverActiveAnno }: Props): JSX.Element;
+declare function AnnotationWrapper({ handleEditAnnotation, name, height, width, top, left, handleCancelEdit, handleKeyPress, handlePointerMove, handleSaveEdit, removeAnnotation, type, annotationTypes, options, rainbowMode, setHoverActiveAnno, onHoverFromList }: Props): JSX.Element;
 export default AnnotationWrapper;

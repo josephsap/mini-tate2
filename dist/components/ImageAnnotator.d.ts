@@ -6,12 +6,13 @@ export type TProps = {
     annos?: TAnnotationRaw[];
     onChange?: (annos: TAnnotationRaw[]) => any;
     onHover?: (name: string) => string;
+    onHoverFromList?: string;
     onError?: (error: string) => any;
     annotationTypes?: string[];
     options?: TOptions;
     rainbowMode?: boolean;
 };
-export declare function ImageAnnotator({ imageSrc, annos, onChange, onHover, onError, annotationTypes, options, rainbowMode }: TProps): JSX.Element;
+export declare function ImageAnnotator({ imageSrc, annos, onChange, onHover, onHoverFromList, onError, annotationTypes, options, rainbowMode }: TProps): JSX.Element;
 export declare namespace ImageAnnotator {
     var defaultProps: {
         annos: any;

@@ -27,6 +27,7 @@ describe('<AnnotationWrapper />', () => {
         width="20px"
         rainbowMode={false}
         setHoverActiveAnno={jest.fn()}
+        onHoverFromList="name here"
       />
     );
 
