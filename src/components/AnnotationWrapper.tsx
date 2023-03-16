@@ -34,6 +34,7 @@ type Props = {
   options: TOptions;
   rainbowMode: boolean;
   setHoverActiveAnno: (name: string) => void;
+  onHoverFromList: string;
 };
 
 function AnnotationWrapper({
@@ -52,7 +53,8 @@ function AnnotationWrapper({
   annotationTypes,
   options,
   rainbowMode,
-  setHoverActiveAnno
+  setHoverActiveAnno,
+  onHoverFromList
 }: Props) {
   const dispatch = useAppDispatch();
 
@@ -147,6 +149,7 @@ function AnnotationWrapper({
       type={type}
       rainbowMode={rainbowMode}
       setHoverActiveAnno={setHoverActiveAnno}
+      onHoverFromList={onHoverFromList}
     />
   );
 }

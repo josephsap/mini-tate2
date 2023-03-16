@@ -17,6 +17,7 @@ export type Props = {
   type?: string | null;
   types?: string[];
   setHoverActiveAnno: (name: string) => void;
+  onHoverFromList: string;
 };
 
 const colors = [
@@ -44,6 +45,7 @@ function StaticAnnotation({
   type = null,
   types = [],
   setHoverActiveAnno,
+  onHoverFromList
 }: Props) {
   const styles = options.annoStyles || {};
   const [showName, setShowName] = useState<boolean>(false);
@@ -63,6 +65,12 @@ function StaticAnnotation({
     }
     return `${leftCoord}px`;
   };
+
+  if (name == onHoverFromList) {
+    setShowName(true);
+  } else {
+    setShowName(false);
+  }
 
   return (
     <div

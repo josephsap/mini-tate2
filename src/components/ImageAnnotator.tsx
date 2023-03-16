@@ -34,6 +34,7 @@ export type TProps = {
   annos?: TAnnotationRaw[];
   onChange?: (annos: TAnnotationRaw[]) => any;
   onHover?: (name: string) => string;
+  onHoverFromList?: string;
   onError?: (error: string) => any;
   annotationTypes?: string[];
   options?: TOptions;
@@ -45,6 +46,7 @@ export function ImageAnnotator({
   annos,
   onChange,
   onHover,
+  onHoverFromList,
   onError,
   annotationTypes = [],
   options = {},
@@ -431,6 +433,7 @@ export function ImageAnnotator({
           removeAnnotation={removeAnnotation}
           rainbowMode={rainbowMode}
           setHoverActiveAnno={setHoverActiveAnno}
+          onHoverFromList={onHoverFromList}
           {...annotation}
         />
       ))}
