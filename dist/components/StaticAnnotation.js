@@ -69,12 +69,22 @@ function StaticAnnotation(_a) {
         }
         return "".concat(leftCoord, "px");
     };
-    if (name == onHoverFromList) {
-        setShowName(true);
+    if (onHoverFromList) {
+        console.log(name, onHoverFromList, 'aaaaaaa');
+        if (name === onHoverFromList) {
+            setShowName(true);
+        }
+        else {
+            setShowName(false);
+        }
     }
-    else {
-        setShowName(false);
-    }
+    // useEffect(() => {
+    // if (name == onHoverFromList) {
+    //   setShowName(true);
+    // } else {
+    //   setShowName(false);
+    // }
+    // }, [onHoverFromList]);
     return (react_1["default"].createElement("div", { className: "staticAnno".concat(showName ? ' pointer' : ''), "data-testid": "static-annotation", onClick: onClick, onPointerDown: function (e) { return e.stopPropagation(); }, style: __assign(__assign({}, styles), { height: height, width: width, top: top, left: left, backgroundColor: backgroundColor }), onMouseEnter: function () { setShowName(true); setHoverActiveAnno(name); }, onMouseLeave: function () { setShowName(false); setHoverActiveAnno(''); } }, showName && (react_1["default"].createElement("h3", { className: "annotationNameHover", style: {
             top: "".concat((0, utils_1.pixelToNum)(height) - 10, "px"),
             left: calculateTooltipPosition()

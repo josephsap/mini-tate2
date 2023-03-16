@@ -1,6 +1,6 @@
 // Copyright (c) 2023 Alteryx, Inc. All rights reserved.
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { pixelToNum } from '../utils';
 
 import { TOptions } from '../types';
@@ -66,11 +66,22 @@ function StaticAnnotation({
     return `${leftCoord}px`;
   };
 
-  if (name == onHoverFromList) {
-    setShowName(true);
-  } else {
-    setShowName(false);
+  if (onHoverFromList) {
+    console.log(name, onHoverFromList, 'aaaaaaa')
+    if (name === onHoverFromList) {
+      setShowName(true);
+    } else {
+      setShowName(false);
+    }
   }
+
+  // useEffect(() => {
+    // if (name == onHoverFromList) {
+    //   setShowName(true);
+    // } else {
+    //   setShowName(false);
+    // }
+  // }, [onHoverFromList]);
 
   return (
     <div
