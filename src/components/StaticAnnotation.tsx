@@ -1,6 +1,6 @@
 // Copyright (c) 2023 Alteryx, Inc. All rights reserved.
 
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { pixelToNum } from '../utils';
 
 import { TOptions } from '../types';
@@ -50,7 +50,7 @@ function StaticAnnotation({
   const styles = options.annoStyles || {};
   const [showName, setShowName] = useState<boolean>(false);
   // color-code by type
-  const backgroundColor = rainbowMode ? getColor(types, type) : 'none';
+  const backgroundColor = rainbowMode ? getColor(types, type) : options.annoStyles.backgroundColor;
 
   const calculateTooltipPosition = () => {
     const leftCoord = pixelToNum(width) / 2 - 100;
@@ -65,23 +65,6 @@ function StaticAnnotation({
     }
     return `${leftCoord}px`;
   };
-
-
-  // if (onHoverFromList) {
-  //   console.log(name, onHoverFromList, 'aaaaaaa')
-  //   if (name === onHoverFromList) {
-  //     console.log('yep')
-  //     setShowName(true);
-  //   }
-  // }
-
-  // useEffect(() => {
-    // if (name == onHoverFromList) {
-    //   setShowName(true);
-    // } else {
-    //   setShowName(false);
-    // }
-  // }, [onHoverFromList]);
 
   return (
     <div
