@@ -77,7 +77,7 @@ function StaticAnnotation({
       onMouseEnter={() => { setShowName(true); setHoverActiveAnno(name) }}
       onMouseLeave={() => { setShowName(false); setHoverActiveAnno('') }}
     >
-      
+      {showName || onHoverFromList === name ? (
         <h3
           className="annotationNameHover"
           style={{
@@ -87,8 +87,8 @@ function StaticAnnotation({
         >
           {name}
         </h3>
-      
-      {onHoverFromList === name ? (
+      ): null}
+      {/* {onHoverFromList === name ? (
         <h3
           className="annotationNameHover"
           style={{
@@ -98,7 +98,7 @@ function StaticAnnotation({
         >
           {name}
         </h3>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
