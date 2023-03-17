@@ -78,27 +78,17 @@ function StaticAnnotation({
       onMouseLeave={() => { setShowName(false); setHoverActiveAnno('') }}
     >
       {showName || onHoverFromList === name ? (
-        <h3
+        <div
           className="annotationNameHover"
           style={{
             top: `${pixelToNum(height) - 10}px`,
             left: 0,
           }}
         >
-          {name}
-        </h3>
+          <p>{type}</p>
+          <h3>{name}</h3>
+        </div>
       ): null}
-      {/* {onHoverFromList === name ? (
-        <h3
-          className="annotationNameHover"
-          style={{
-            top: `${pixelToNum(height) - 10}px`,
-            left: 0,
-          }}
-        >
-          {name}
-        </h3>
-      ) : null} */}
     </div>
   );
 }
