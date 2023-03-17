@@ -52,20 +52,20 @@ function StaticAnnotation({
   // color-code by type
   const backgroundColor = rainbowMode ? getColor(types, type) : options.annoStyles.backgroundColor;
 
-  const calculateTooltipPosition = () => {
-    const leftCoord = pixelToNum(width) / 2 - 100;
-    const imgBounds = document.getElementById('anno-img')?.getBoundingClientRect();
-    if (imgBounds) {
-      if (imgBounds.right < leftCoord + pixelToNum(left) + 200) {
-        return pixelToNum(width) < 200 ? `${pixelToNum(width) - 200}px` : left;
-      }
-      if (imgBounds.left > leftCoord + pixelToNum(left)) {
-        return left;
-      }
-    }
-    console.log(leftCoord, 'left coords')
-    return `${leftCoord}px`;
-  };
+  // const calculateTooltipPosition = () => {
+  //   const leftCoord = pixelToNum(width) / 2 - 100;
+  //   const imgBounds = document.getElementById('anno-img')?.getBoundingClientRect();
+  //   if (imgBounds) {
+  //     if (imgBounds.right < leftCoord + pixelToNum(left) + 200) {
+  //       return pixelToNum(width) < 200 ? `${pixelToNum(width) - 200}px` : left;
+  //     }
+  //     if (imgBounds.left > leftCoord + pixelToNum(left)) {
+  //       return left;
+  //     }
+  //   }
+  //   console.log(leftCoord, 'left coords')
+  //   return `${leftCoord}px`;
+  // };
 
   return (
     <div
@@ -82,7 +82,7 @@ function StaticAnnotation({
           className="annotationNameHover"
           style={{
             top: `${pixelToNum(height) - 10}px`,
-            left: calculateTooltipPosition(),
+            left: 0,
           }}
         >
           {name}
@@ -93,7 +93,7 @@ function StaticAnnotation({
           className="annotationNameHover"
           style={{
             top: `${pixelToNum(height) - 10}px`,
-            left: calculateTooltipPosition(),
+            left: 0,
           }}
         >
           {name}
