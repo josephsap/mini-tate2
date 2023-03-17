@@ -69,9 +69,8 @@ function StaticAnnotation({
   if (onHoverFromList) {
     console.log(name, onHoverFromList, 'aaaaaaa')
     if (name === onHoverFromList) {
+      console.log('yep')
       setShowName(true);
-    } else {
-      setShowName(false);
     }
   }
 
