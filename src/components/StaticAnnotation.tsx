@@ -63,6 +63,7 @@ function StaticAnnotation({
         return left;
       }
     }
+    console.log(leftCoord, 'left coords')
     return `${leftCoord}px`;
   };
 
@@ -76,7 +77,7 @@ function StaticAnnotation({
       onMouseEnter={() => { setShowName(true); setHoverActiveAnno(name) }}
       onMouseLeave={() => { setShowName(false); setHoverActiveAnno('') }}
     >
-      {showName && (
+      
         <h3
           className="annotationNameHover"
           style={{
@@ -86,7 +87,7 @@ function StaticAnnotation({
         >
           {name}
         </h3>
-      )}
+      
       {onHoverFromList === name ? (
         <h3
           className="annotationNameHover"
