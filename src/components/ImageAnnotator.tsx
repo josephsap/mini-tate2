@@ -149,7 +149,6 @@ export function ImageAnnotator({
   };
 
   const handleEditAnnotation = (name: string) => {
-    console.log('from mini tate 2 github handleEdit', hoverActiveAnno);
     if (onHover) {
       console.log('On HOver Function', hoverActiveAnno)
       return hoverActiveAnno;

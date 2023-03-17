@@ -1,6 +1,6 @@
 // Copyright (c) 2023 Alteryx, Inc. All rights reserved.
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { pixelToNum } from '../utils';
 
 import { TOptions } from '../types';
@@ -66,13 +66,14 @@ function StaticAnnotation({
     return `${leftCoord}px`;
   };
 
-  if (onHoverFromList) {
-    console.log(name, onHoverFromList, 'aaaaaaa')
-    if (name === onHoverFromList) {
-      console.log('yep')
-      setShowName(true);
-    }
-  }
+
+  // if (onHoverFromList) {
+  //   console.log(name, onHoverFromList, 'aaaaaaa')
+  //   if (name === onHoverFromList) {
+  //     console.log('yep')
+  //     setShowName(true);
+  //   }
+  // }
 
   // useEffect(() => {
     // if (name == onHoverFromList) {
@@ -103,6 +104,17 @@ function StaticAnnotation({
           {name}
         </h3>
       )}
+      {onHoverFromList === name ? (
+        <h3
+          className="annotationNameHover"
+          style={{
+            top: `${pixelToNum(height) - 10}px`,
+            left: calculateTooltipPosition(),
+          }}
+        >
+          {name}
+        </h3>
+      ) : null}
     </div>
   );
 }

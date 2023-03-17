@@ -152,7 +152,6 @@ function ImageAnnotator(_a) {
         });
     };
     var handleEditAnnotation = function (name) {
-        console.log('from mini tate 2 github handleEdit', hoverActiveAnno);
         if (onHover) {
             console.log('On HOver Function', hoverActiveAnno);
             return hoverActiveAnno;
